@@ -9,7 +9,7 @@ public class Lesson {
 
     public Lesson() {
         sentences = new ArrayList<>();
-        sentences.add("I like summettime.");
+        sentences.add("I like summertime.");
     }
 
 
