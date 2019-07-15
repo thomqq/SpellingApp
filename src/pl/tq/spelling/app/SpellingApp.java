@@ -6,6 +6,7 @@ import pl.tq.spelling.audiodriver.AudioDriver;
 import pl.tq.spelling.audiodriver.AudioFXPanelDriver;
 import pl.tq.spelling.service.lesson.Lesson;
 import pl.tq.spelling.service.lesson.LessonService;
+import pl.tq.spelling.service.mp3Provider.PollyVoiceEnum;
 import pl.tq.spelling.service.sentence.SentenceService;
 import pl.tq.spelling.service.user.User;
 import pl.tq.spelling.util.Config;
@@ -65,6 +66,14 @@ public class SpellingApp {
             String sentence = getStringFromConsole();
             String mp3Sentence = sentenceService.getAudio(sentence);
             audioDriver.play(mp3Sentence);
+        }));
+
+        menu.add(new MenuItem(4, "Ustaw Angielski", () -> {
+            sentenceService.setPollyVoice(PollyVoiceEnum.EN);
+        }));
+
+        menu.add(new MenuItem(5, "Ustaw Polski", () -> {
+            sentenceService.setPollyVoice(PollyVoiceEnum.PL);
         }));
 
         menu.add(new MenuItem(0, "Koniec", () -> {

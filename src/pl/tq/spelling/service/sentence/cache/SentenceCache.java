@@ -1,7 +1,7 @@
 package pl.tq.spelling.service.sentence.cache;
 
+import pl.tq.spelling.service.mp3Provider.Sentence;
 import pl.tq.spelling.service.sentence.util.MD5Util;
-import pl.tq.spelling.util.Config;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,28 +21,23 @@ public class SentenceCache {
         }
     }
 
-    public boolean contain(String sentence) {
-        File file = new File(prepareMp3Path(sentence));
+    public boolean contain(Sentence sentence) {
+        File file = new File(preparePath(sentence, "mp3"));
         return Files.exists(file.toPath(), LinkOption.NOFOLLOW_LINKS);
     }
 
-    public String prepareMp3Path(String sentence) {
-        String md5 = MD5Util.MD5(sentence);
-        return cacheDirectory + md5 + ".mp3";
+    public String preparePath(Sentence sentence, String suffix) {
+        String md5 = MD5Util.MD5(sentence.getText() + "_" + sentence.toString());
+        return cacheDirectory + md5 + "_" + sentence.getPollyVoice() + "." + suffix;
     }
 
-    public String prepareTxtPath(String sentence) {
-        String md5 = MD5Util.MD5(sentence);
-        return cacheDirectory + md5 + ".txt";
-    }
-
-    public void add(String sentence, String path) throws IOException {
+    public void add(Sentence sentence, String path) throws IOException {
         File fileSource = new File(path);
-        File fileDestination = new File(prepareMp3Path(sentence));
+        File fileDestination = new File(preparePath(sentence, "mp3"));
 
         Files.copy(fileSource.toPath(), fileDestination.toPath(), new CopyOption[]{StandardCopyOption.REPLACE_EXISTING});
 
-        File sentenceFile = new File(prepareTxtPath(sentence));
-        Files.write(sentenceFile.toPath(), Arrays.asList(sentence));
+        File sentenceFile = new File(preparePath(sentence, "txt"));
+        Files.write(sentenceFile.toPath(), Arrays.asList(sentence.getText()));
     }
 }
