@@ -23,7 +23,8 @@ import java.nio.file.StandardCopyOption;
 
 public class PollyMp3Provider implements Mp3Provider {
     private final AmazonPollyClient polly;
-    private final Voice voice;
+    private Voice voice;
+    private final Voice defaultVoice;
     private Config config;
 
     public PollyMp3Provider(Config config) {
@@ -35,17 +36,26 @@ public class PollyMp3Provider implements Mp3Provider {
         DescribeVoicesRequest describeVoicesRequest = new DescribeVoicesRequest();
 
         // Synchronously ask Amazon Polly to describe available TTS voices.
-        DescribeVoicesResult describeVoicesResult = polly.describeVoices(describeVoicesRequest);
-        voice = describeVoicesResult.getVoices().get(0);
-        voice.setLanguageCode(LanguageCode.EnGB);
-        voice.setGender(Gender.Female);
-        voice.setId("Amy");
+
+        defaultVoice = new Voice();
+        //DescribeVoicesResult describeVoicesResult = polly.describeVoices(describeVoicesRequest);
+        //voice = describeVoicesResult.getVoices().get(0);
+        defaultVoice.setLanguageCode(LanguageCode.EnGB);
+        defaultVoice.setGender(Gender.Female);
+        defaultVoice.setId("Amy");
+        defaultVoice.setLanguageName("British English");
+        defaultVoice.setName("Amy");
+    }
+
+    public void setVoice( PollyVoiceEnum pollyVoiceEnum) {
+        this.voice = pollyVoiceEnum.getVoice();
     }
 
     @Override
     public String getPathToMp3Sentence(String sentence) {
+        Voice useVoice = voice == null ? defaultVoice : voice;
         SynthesizeSpeechRequest synthReq =
-                new SynthesizeSpeechRequest().withText(sentence).withVoiceId(voice.getId())
+                new SynthesizeSpeechRequest().withText(sentence).withVoiceId(useVoice.getId())
                         .withOutputFormat(OutputFormat.Mp3);
         SynthesizeSpeechResult synthRes = polly.synthesizeSpeech(synthReq);
 
