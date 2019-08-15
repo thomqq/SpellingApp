@@ -1,19 +1,20 @@
 package pl.tq.spelling.service.lesson;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Lesson {
 
-    private List<String> sentences;
+    private final String sentence;
+    private final String answer;
 
-    public Lesson() {
-        sentences = new ArrayList<>();
-        sentences.add("I like summertime.");
+    public Lesson(String sentence, String answer) {
+        this.sentence = sentence;
+        this.answer = answer;
     }
 
-
     public String getSentence() {
-        return sentences.get(0);
+        return sentence;
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }

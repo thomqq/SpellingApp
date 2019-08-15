@@ -11,6 +11,11 @@ public class FakeLessonService implements LessonService {
 
     @Override
     public Lesson getLastLesson(int id) {
-        return new Lesson();
+        return new Lesson("I like tomato.", "Lubie pomodora.");
+    }
+
+    @Override
+    public void startNewLesson(int id) {
+
     }
 }

@@ -11,5 +11,6 @@
     <orderEntry type="library" name="com.amazonaws:aws-java-sdk-polly:1.11.186" level="project" />
     <orderEntry type="library" name="com.amazonaws:aws-java-sdk-core:1.11.186" level="project" />
     <orderEntry type="library" name="basicplayer3.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="project" />
   </component>
 </module>

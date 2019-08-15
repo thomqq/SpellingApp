@@ -1,0 +1,4 @@
+1|Lesson 1
+1|EN|I have to sail to this island in spite of bad weather.|PL|Musisz płynąć do wyspy pomimo złej pogody.
+2|EN|I lifted the box despite them being heavy.|PL|Podniosłem pudełko pomimo, że jest ciężkie.
+3|EN|I lifted it despite its weight.|PL|Podniosłem pudełko pomimo jego wagi.

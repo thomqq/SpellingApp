@@ -28,7 +28,6 @@ public class Main {
         LessonService lessonService = new FakeLessonService();
         SentenceService sentenceService = new SentencePollyService(new SentenceCache(config.getValue("mp3CacheDirectory")), new PollyMp3Provider(config));
 
-
         SpellingApp spellingApp = new SpellingApp(config, user, lessonService, sentenceService, new AudioFXPanelDriver());
         spellingApp.run();
     }
