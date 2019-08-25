@@ -13,8 +13,10 @@ import com.amazonaws.services.polly.model.OutputFormat;
 import com.amazonaws.services.polly.model.SynthesizeSpeechRequest;
 import com.amazonaws.services.polly.model.SynthesizeSpeechResult;
 import com.amazonaws.services.polly.model.Voice;
+import pl.tq.apilimiter.annotations.Limit;
 import pl.tq.spelling.util.Config;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +27,7 @@ public class PollyMp3Provider implements Mp3Provider {
     private final AmazonPollyClient polly;
     private Config config;
 
+    @Inject
     public PollyMp3Provider(Config config) {
         this.config = config;
         polly = new AmazonPollyClient(new BasicAWSCredentials(config.getValue("polly_access"), config.getValue("polly_key")),
@@ -33,6 +36,7 @@ public class PollyMp3Provider implements Mp3Provider {
     }
 
     @Override
+    @Limit(amount = 3)
     public String getPathToMp3Sentence(Sentence sentence) {
         SynthesizeSpeechRequest synthReq =
                 new SynthesizeSpeechRequest().withText(sentence.getText()).withVoiceId(sentence.getPollyVoice().getId())

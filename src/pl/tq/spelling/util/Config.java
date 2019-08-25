@@ -1,5 +1,6 @@
 package pl.tq.spelling.util;
 
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,8 +9,10 @@ import java.util.List;
 public class Config {
     private final String configPath;
 
-    public Config(String configPath) {
-        this.configPath = configPath;
+    @Inject
+    public Config() {
+        String pathToConfig = System.getenv().get("SPELLING_CONFIG") + "AudioCfg.txt";
+        this.configPath = pathToConfig;
     }
 
     public String getValue( String key) {
