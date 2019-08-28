@@ -7,12 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="com.amazonaws:aws-java-sdk-acm:1.11.186" level="project" />
-    <orderEntry type="library" name="com.amazonaws:aws-java-sdk-polly:1.11.186" level="project" />
-    <orderEntry type="library" name="com.amazonaws:aws-java-sdk-core:1.11.186" level="project" />
+    <orderEntry type="library" name="com.amazonaws:aws-java-sdk-acm:1.11.186" level="application" />
+    <orderEntry type="library" name="com.amazonaws:aws-java-sdk-polly:1.11.186" level="application" />
+    <orderEntry type="library" name="com.amazonaws:aws-java-sdk-core:1.11.186" level="application" />
     <orderEntry type="library" name="basicplayer3.0" level="project" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="project" />
-    <orderEntry type="module" module-name="ApiLimiter" />
-    <orderEntry type="library" name="com.google.inject:guice:4.1.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.5" level="application" />
+    <orderEntry type="library" name="com.google.inject:guice:4.1.0" level="application" />
   </component>
 </module>
