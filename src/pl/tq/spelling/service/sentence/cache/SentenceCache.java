@@ -27,7 +27,7 @@ public class SentenceCache {
     }
 
     public String preparePath(Sentence sentence, String suffix) {
-        String md5 = MD5Util.MD5(sentence.getText() + "_" + sentence.toString());
+        String md5 = MD5Util.MD5(sentence.getText() + "_" + sentence.getPollyVoice().name());
         return cacheDirectory + md5 + "_" + sentence.getPollyVoice() + "." + suffix;
     }
 
