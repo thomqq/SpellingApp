@@ -3,7 +3,6 @@ package pl.tq.spelling.app;
 import pl.tq.spelling.app.menu.Menu;
 import pl.tq.spelling.app.menu.MenuItem;
 import pl.tq.spelling.audiodriver.AudioDriver;
-import pl.tq.spelling.audiodriver.AudioFXPanelDriver;
 import pl.tq.spelling.service.lesson.Lesson;
 import pl.tq.spelling.service.lesson.LessonService;
 import pl.tq.spelling.service.mp3Provider.PollyVoiceEnum;
